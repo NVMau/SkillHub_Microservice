@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "ProfileDeleteEvent",
+  "namespace": "com.vmaudev.profile_service.event",
+  "fields": [
+    { "name": "profileId", "type": "string" }
+  ]
+}

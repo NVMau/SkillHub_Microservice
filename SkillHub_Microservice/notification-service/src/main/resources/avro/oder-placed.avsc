@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "OrderPlacedEvent",
+  "namespace": "com.vmaudev.enrollment_service.event",
+  "fields": [
+    { "name": "courseId", "type": "string" },
+    { "name": "email", "type": "string" },
+    { "name": "firstName", "type": "string" },
+    { "name": "lastName", "type": "string" }
+  ]
+}

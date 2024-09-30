@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "AssignmentDeletedEvent",
+  "namespace": "com.vmaudev.assignment_service.event",
+  "fields": [
+    { "name": "assignmentIds", "type": { "type": "array", "items": "string" } }
+  ]
+}
