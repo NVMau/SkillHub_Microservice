@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "ProfileCreatedEvent",
+  "namespace": "com.vmaudev.profile_service.event",
+  "fields": [
+    { "name": "email", "type": "string" },
+    { "name": "firstName", "type": "string" },
+    { "name": "lastName", "type": "string" }
+  ]
+}

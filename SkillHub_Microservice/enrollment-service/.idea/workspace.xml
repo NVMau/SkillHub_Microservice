@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c668630c-f005-4ac4-be2e-c6b83f04829f" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar!/META-INF/INDEX.LIST" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2kVsiLFgfkjWrlCRWiqlaLplliH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.enrollment-service [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enrollment-service [clean,verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enrollment-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.enrollment-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EnrollmentServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Trash/enrollment-service/src/main/resources/avro&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Trash\enrollment-service\src\main\resources\avro" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="vmvn clean verify" />
+      <command value="mvn clean verify" />
+      <command value="mvn clean" />
+      <command value="mvn compile" />
+      <command value="mvn clean compile" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="EnrollmentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="enrollment-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.vmaudev.enrollment_service.EnrollmentServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vmaudev.enrollment_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.EnrollmentServiceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c668630c-f005-4ac4-be2e-c6b83f04829f" name="Changes" comment="" />
+      <created>1723380204907</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1723380204907</updated>
+      <workItem from="1723380205954" duration="3568000" />
+      <workItem from="1723389577586" duration="3786000" />
+      <workItem from="1723394022126" duration="19000" />
+      <workItem from="1723394285557" duration="117000" />
+      <workItem from="1723394414647" duration="129000" />
+      <workItem from="1723394560549" duration="10000" />
+      <workItem from="1723394573776" duration="2000" />
+      <workItem from="1723394590007" duration="351000" />
+      <workItem from="1723394943815" duration="47000" />
+      <workItem from="1723395075130" duration="542000" />
+      <workItem from="1723437090803" duration="2931000" />
+      <workItem from="1723539661259" duration="15000" />
+      <workItem from="1723539681394" duration="59000" />
+      <workItem from="1723539829317" duration="26000" />
+      <workItem from="1723539862818" duration="16000" />
+      <workItem from="1723540388623" duration="10000" />
+      <workItem from="1723541112842" duration="296000" />
+      <workItem from="1723541423184" duration="86000" />
+      <workItem from="1723541896988" duration="2335000" />
+      <workItem from="1723790780882" duration="698000" />
+      <workItem from="1723830812291" duration="1002000" />
+      <workItem from="1723992731234" duration="11000" />
+      <workItem from="1724208690109" duration="721000" />
+      <workItem from="1724686006370" duration="4486000" />
+      <workItem from="1724737888436" duration="2296000" />
+      <workItem from="1724945187794" duration="596000" />
+      <workItem from="1725034545213" duration="2692000" />
+      <workItem from="1725614056923" duration="613000" />
+      <workItem from="1725682630120" duration="2700000" />
+      <workItem from="1725810696960" duration="850000" />
+      <workItem from="1725913902571" duration="2105000" />
+      <workItem from="1725943431225" duration="4143000" />
+      <workItem from="1726063324478" duration="459000" />
+      <workItem from="1726066075317" duration="117000" />
+      <workItem from="1726066315542" duration="16000" />
+      <workItem from="1726066406454" duration="93000" />
+      <workItem from="1726066566271" duration="1161000" />
+      <workItem from="1726068004887" duration="351000" />
+      <workItem from="1726075077128" duration="914000" />
+      <workItem from="1726076000736" duration="1007000" />
+      <workItem from="1726077059412" duration="394000" />
+      <workItem from="1726077781843" duration="325000" />
+      <workItem from="1726078152284" duration="362000" />
+      <workItem from="1726078523329" duration="59000" />
+      <workItem from="1726078596479" duration="42000" />
+      <workItem from="1726078641206" duration="265000" />
+      <workItem from="1726078939802" duration="11000" />
+      <workItem from="1726078965373" duration="151000" />
+      <workItem from="1726079124470" duration="74000" />
+      <workItem from="1726079201521" duration="209000" />
+      <workItem from="1726079444741" duration="355000" />
+      <workItem from="1726079807441" duration="117000" />
+      <workItem from="1726079932289" duration="26000" />
+      <workItem from="1726079963964" duration="9000" />
+      <workItem from="1726079981827" duration="90000" />
+      <workItem from="1726080244773" duration="9000" />
+      <workItem from="1726080265226" duration="109000" />
+      <workItem from="1726080382564" duration="28000" />
+      <workItem from="1726080450733" duration="651000" />
+      <workItem from="1726153361738" duration="1122000" />
+      <workItem from="1726154800449" duration="1703000" />
+      <workItem from="1726160886804" duration="606000" />
+      <workItem from="1726236391343" duration="2938000" />
+      <workItem from="1726255447037" duration="1778000" />
+      <workItem from="1726260240919" duration="597000" />
+      <workItem from="1726296079518" duration="847000" />
+      <workItem from="1726314432868" duration="614000" />
+      <workItem from="1726392105535" duration="717000" />
+      <workItem from="1726441779055" duration="656000" />
+      <workItem from="1726481498988" duration="643000" />
+      <workItem from="1726501145433" duration="757000" />
+      <workItem from="1726570084543" duration="22330000" />
+      <workItem from="1726616958784" duration="6911000" />
+      <workItem from="1726675772153" duration="825000" />
+      <workItem from="1726702215872" duration="1364000" />
+      <workItem from="1726768436110" duration="322000" />
+      <workItem from="1726785473492" duration="4201000" />
+      <workItem from="1726848811338" duration="2540000" />
+      <workItem from="1726903963357" duration="14073000" />
+      <workItem from="1727009634575" duration="9653000" />
+      <workItem from="1727056544841" duration="590000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

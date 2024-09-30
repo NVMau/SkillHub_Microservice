@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "LectureDeletedEvent",
+  "namespace": "com.vmaudev.lecture_service.event",
+  "fields": [
+    { "name": "lectureIds", "type": { "type": "array", "items": "string" } }
+  ]
+}

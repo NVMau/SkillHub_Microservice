@@ -1,0 +1,12 @@
+com\vmaudev\course_service\event\CourseDeleteEvent.class
+com\vmaudev\lecture_service\repository\LectureRepository.class
+com\vmaudev\lecture_service\configuration\AmazonS3Config.class
+com\vmaudev\lecture_service\LectureServiceApplication.class
+com\vmaudev\course_service\event\CourseDeleteEvent$Builder.class
+com\vmaudev\lecture_service\event\LectureDeletedEvent.class
+com\vmaudev\lecture_service\model\Lecture.class
+com\vmaudev\lecture_service\event\LectureDeletedEvent$Builder.class
+com\vmaudev\lecture_service\controller\LectureController.class
+com\vmaudev\lecture_service\model\Lecture$LectureBuilder.class
+com\vmaudev\lecture_service\service\LectureService.class
+com\vmaudev\lecture_service\configuration\S3Service.class

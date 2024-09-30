@@ -1,0 +1,5 @@
+D:\SkillHubMicroservice\api-gateway\api-gateway\src\main\java\com\vnmaudev\api_gateway\ApiGatewayApplication.java
+D:\SkillHubMicroservice\api-gateway\api-gateway\src\main\java\com\vnmaudev\api_gateway\configuration\CorsConfiguration.java
+D:\SkillHubMicroservice\api-gateway\api-gateway\src\main\java\com\vnmaudev\api_gateway\configuration\JwtAuthenticationEntryPoint.java
+D:\SkillHubMicroservice\api-gateway\api-gateway\src\main\java\com\vnmaudev\api_gateway\configuration\SecurityConfig.java
+D:\SkillHubMicroservice\api-gateway\api-gateway\src\main\java\com\vnmaudev\api_gateway\Routes.java

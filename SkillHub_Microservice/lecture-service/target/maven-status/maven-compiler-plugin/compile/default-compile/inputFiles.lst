@@ -1,0 +1,9 @@
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\course_service\event\CourseDeleteEvent.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\configuration\AmazonS3Config.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\configuration\S3Service.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\controller\LectureController.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\event\LectureDeletedEvent.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\LectureServiceApplication.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\model\Lecture.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\repository\LectureRepository.java
+D:\LEARNING SCHOOL\BigProject\lecture-service\src\main\java\com\vmaudev\lecture_service\service\LectureService.java
