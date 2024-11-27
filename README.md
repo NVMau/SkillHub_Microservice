@@ -28,3 +28,5 @@ The technologies used in this project are:
 - AI chat usinng key OpenAI
 - AWS S3
 - Docker
+- Gin
+- Pra
