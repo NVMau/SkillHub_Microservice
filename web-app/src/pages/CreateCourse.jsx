@@ -84,7 +84,7 @@ export default function CreateCourse() {
     formData.append("description", description);
     formData.append("price", price);
     formData.append("tags", JSON.stringify(tags));
-    formData.append("teacherId", teacherId); // profileId của giáo viên được chọn
+    formData.append("teacherId", teacherId || profile.profileId); // profileId của giáo viên được chọn
     formData.append("file", file);
 
     try {

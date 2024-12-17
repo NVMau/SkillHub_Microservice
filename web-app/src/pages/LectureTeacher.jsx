@@ -21,7 +21,7 @@ import {
   createAssignment,
   getAssignmentsByLectureId,
 } from "../services/assignmentService";
-import useUserRoles from "../services/useUserRoles"; 
+import useUserRoles from "../services/useUserRoles";
 export default function LectureTeacher() {
   const { courseId } = useParams(); // Lấy courseId từ URL
   const [lectures, setLectures] = useState([]);
@@ -32,7 +32,7 @@ export default function LectureTeacher() {
     videos: [],
   });
   const [previewVideo, setPreviewVideo] = useState([]); // Hiển thị video preview
-  const userRoles = useUserRoles(); 
+  const userRoles = useUserRoles();
   // Get user roles
 
   // Trạng thái để theo dõi câu hỏi của từng bài giảng
@@ -44,35 +44,33 @@ export default function LectureTeacher() {
   const [lectureAssignments, setLectureAssignments] = useState({});
   // Lấy danh sách bài giảng và khởi tạo câu hỏi cho mỗi bài giảng
   // Lấy danh sách bài giảng và bài tập
-  useEffect(() => {
-    const fetchLecturesAndAssignments = async () => {
-      try {
-        // Lấy danh sách bài giảng
-        const response = await getLecturesByCourseId(courseId);
-        const lecturesData = response.data;
-        setLectures(lecturesData);
 
-        // Khởi tạo mảng câu hỏi cho từng bài giảng
-        const initialQuestions = lecturesData.reduce((acc, lecture) => {
-          acc[lecture.id] = []; // Mỗi bài giảng có mảng câu hỏi riêng
-          return acc;
-        }, {});
-        setLectureQuestions(initialQuestions);
+  const fetchLecturesAndAssignments = async () => {
+    try {
+      // Lấy danh sách bài giảng
+      const response = await getLecturesByCourseId(courseId);
+      const lecturesData = response.data;
+      setLectures(lecturesData);
 
-        // Lấy bài tập cho từng bài giảng
-        const assignmentsMap = {};
-        for (const lecture of lecturesData) {
-          const assignmentResponse = await getAssignmentsByLectureId(
-            lecture.id
-          );
-          assignmentsMap[lecture.id] = assignmentResponse.data;
-        }
-        setLectureAssignments(assignmentsMap);
-      } catch (error) {
-        console.error("Error fetching lectures or assignments:", error);
+      // Khởi tạo mảng câu hỏi cho từng bài giảng
+      const initialQuestions = lecturesData.reduce((acc, lecture) => {
+        acc[lecture.id] = []; // Mỗi bài giảng có mảng câu hỏi riêng
+        return acc;
+      }, {});
+      setLectureQuestions(initialQuestions);
+
+      // Lấy bài tập cho từng bài giảng
+      const assignmentsMap = {};
+      for (const lecture of lecturesData) {
+        const assignmentResponse = await getAssignmentsByLectureId(lecture.id);
+        assignmentsMap[lecture.id] = assignmentResponse.data;
       }
-    };
-
+      setLectureAssignments(assignmentsMap);
+    } catch (error) {
+      console.error("Error fetching lectures or assignments:", error);
+    }
+  };
+  useEffect(() => {
     fetchLecturesAndAssignments();
   }, [courseId]);
 
@@ -104,7 +102,15 @@ export default function LectureTeacher() {
       alert("Bài giảng đã được thêm thành công!");
       const response = await getLecturesByCourseId(courseId);
       setLectures(response.data); // Làm mới danh sách bài giảng
-      
+      fetchLecturesAndAssignments();
+      // Reset lại form thêm bài giảng
+      setNewLecture({
+        title: "",
+        content: "",
+        file: null,
+        videos: [],
+      });
+      setPreviewVideo([]); // Xóa các video đã preview
     } catch (error) {
       console.error("Error creating lecture:", error);
       alert("Lỗi khi thêm bài giảng.");
@@ -212,7 +218,14 @@ export default function LectureTeacher() {
                     <strong>Nội dung chính:</strong> {lecture.content}
                   </Typography>
                   {lecture.fileUrl && (
-                    <Box sx={{ display: "flex", marginTop: 2, flexDirection: "row",  alignItems: "center" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        marginTop: 2,
+                        flexDirection: "row",
+                        alignItems: "center",
+                      }}
+                    >
                       <Typography variant="h7" fontWeight={"bold"}>
                         Tài liệu:
                       </Typography>
@@ -349,11 +362,10 @@ export default function LectureTeacher() {
                                 sx={{ mb: 2 }}
                               />
                               <Typography paddingBottom={2} fontWeight={"bold"}>
-                               Nhập các lựa chọn {index + 1}:
+                                Nhập các lựa chọn {index + 1}:
                               </Typography>
                               {question.options.map((option, optionIndex) => (
-                                <TextField 
-                                  
+                                <TextField
                                   key={optionIndex}
                                   label={`Lựa chọn ${optionIndex + 1}`}
                                   value={option}

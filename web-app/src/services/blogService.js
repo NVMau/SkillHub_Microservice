@@ -34,3 +34,7 @@ export const getInteractionsByPostId = async (postId) => {
 export const addInteraction = async (interaction) => {
   return await httpClient.post(`${API.ADD_INTERACTION}`, interaction);
 };
+// API để xóa bài viết
+export const deletePost = async (postId) => {
+  return await httpClient.delete(`${API.DELETE_POST}/${postId}`);
+};

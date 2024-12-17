@@ -28,7 +28,6 @@ import { getMyProfile } from "../services/userService";
 import { submitOrder } from "../services/paymentService";
 import { useProfile } from "../context/ProfileContext"; // Import useProfile
 
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -111,9 +110,14 @@ export default function Header() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
+    console.log(profile.avatarUrl)
     setAnchorEl(event.currentTarget);
   };
 
+  const handleProfileClick = () => {
+    
+    navigate("/profile"); // Điều hướng đến trang Profile
+  };
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -134,6 +138,7 @@ export default function Header() {
     // Điều hướng về trang đăng nhập
     navigate("/login");
   };
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -151,7 +156,7 @@ export default function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
       <MenuItem onClick={handleLogout}>Log Out</MenuItem>
     </Menu>
@@ -197,12 +202,28 @@ export default function Header() {
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
+          edge="end"
           aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
+          aria-controls={menuId}
           aria-haspopup="true"
+          onClick={handleProfileMenuOpen}
           color="inherit"
         >
-          <AccountCircle />
+          {profile?.avatarUrl ? (
+            <Box
+              component="img"
+              src={profile.avatarUrl} // Đường dẫn avatar của người dùng
+              alt="User Avatar"
+              sx={{
+                width: 35,
+                height: 35,
+                borderRadius: "50%", // Làm tròn ảnh
+                objectFit: "cover", // Đảm bảo ảnh không bị méo
+              }}
+            />
+          ) : (
+            <AccountCircle /> // Hiển thị icon mặc định nếu không có avatar
+          )}
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -248,9 +269,6 @@ export default function Header() {
     }
     setOpen(false);
   };
-
-
-
 
   return (
     <>
@@ -331,7 +349,7 @@ export default function Header() {
               alignItems: "center",
             }}
           >
-           {profile ? profile.coin : "0"} 
+            {profile ? profile.coin : "0"}
           </Typography>
           <MonetizationOnIcon /> {/* Icon coin bên cạnh số dư */}
         </CoinContainer>
@@ -343,7 +361,7 @@ export default function Header() {
         <DialogContent>
           <Box sx={{ textAlign: "center", marginBottom: 2 }}>
             <img
-               src="/logo/Logo-VNPAY-QR.png" // Đường dẫn đến logo
+              src="/logo/Logo-VNPAY-QR.png" // Đường dẫn đến logo
               alt="VNPay Logo"
               style={{ width: "150px" }} // Điều chỉnh kích thước nếu cần
             />

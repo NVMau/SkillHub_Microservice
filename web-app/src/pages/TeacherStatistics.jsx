@@ -4,8 +4,7 @@ import { Pie, Bar } from "react-chartjs-2";
 import { getAllCourseByTeacherId, getEnrollmentCountByCourseId } from "../services/courseService";
 import { getLecturesByCourseId } from "../services/lectureService";
 import { useProfile } from "../context/ProfileContext";
-
-
+import Loading from '../components/Loading'; // Component Loading
 import Scene from "./Scene";
 import {
   Chart as ChartJS,
@@ -23,18 +22,20 @@ export default function TeacherStatistics() {
   const [courseStats, setCourseStats] = useState([]);
   const [lectureStats, setLectureStats] = useState([]);
   const [enrollmentStats, setEnrollmentStats] = useState([]);
-  const { profile } = useProfile();
+  const [isLoading, setIsLoading] = useState(true); // Thêm trạng thái loading
+  const { profile, fetchProfile } = useProfile(); // Lấy profile từ context
 
-
-
-  // Gọi API để lấy số liệu thống kê khóa học, bài giảng và học viên
   useEffect(() => {
     const fetchStats = async () => {
+      if (!profile?.profileId) {
+        setIsLoading(false); // Nếu không có profileId, ngừng loading
+        return;
+      }
+      
       try {
-        console.log("Profile", profile)
+        setIsLoading(true); // Bắt đầu loading
         const courseResponse = await getAllCourseByTeacherId(profile.profileId); // Lấy danh sách khóa học của giáo viên
         const courses = courseResponse.data;
-        console.log("Profile", courses)
 
         // Lấy số lượng bài giảng và học viên đăng ký cho từng khóa học
         const statsPromises = courses.map(async (course) => {
@@ -55,14 +56,19 @@ export default function TeacherStatistics() {
         setCourseStats(statsData.map(stat => stat.courseName));
         setLectureStats(statsData.map(stat => stat.lectureCount));
         setEnrollmentStats(statsData.map(stat => stat.enrollmentCount));
-
+        setIsLoading(false); // Kết thúc loading
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
+        setIsLoading(false); // Kết thúc loading nếu có lỗi
       }
     };
 
-    fetchStats();
-  }, [profile.profileId]);
+    if (profile?.profileId) {
+      fetchStats();
+    } else {
+      fetchProfile(); // Gọi hàm fetchProfile nếu chưa có profileId
+    }
+  }, [profile?.profileId]);
 
   // Dữ liệu biểu đồ cột cho số lượng bài giảng theo khóa học
   const lectureBarData = {
@@ -91,6 +97,11 @@ export default function TeacherStatistics() {
       },
     ],
   };
+
+  // Hiển thị Loading nếu đang tải dữ liệu
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Scene>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Typography, Box, Grid, Card, CardContent } from "@mui/material";
 import { Pie, Bar } from "react-chartjs-2";
 import { getAllUsersCount } from "../services/userService";
-import { getAllCourseByTeacherId, getEnrollmentCountByCourseId } from "../services/courseService";
+import { getAllCourses, getEnrollmentCountByCourseId } from "../services/courseService";
 import Scene from "./Scene";
 
 // Cấu hình Chart.js
@@ -35,12 +35,15 @@ export default function StatistSys() {
 
     const fetchCourseStats = async () => {
       try {
-        const courseResponse = await getAllCourseByTeacherId(); // Lấy danh sách khóa học
+        const courseResponse = await getAllCourses(); // Lấy danh sách khóa học
         const courses = courseResponse.data;
+        console.log("Courses:", courses);
+
 
         // Lấy số lượng đăng ký cho từng khóa học
         const enrollmentPromises = courses.map(async (course) => {
           const countResponse = await getEnrollmentCountByCourseId(course.id);
+          console.log(`Enrollment for course ${course.name}:`, countResponse.data);
           return { courseName: course.name, count: countResponse.data };
         });
 

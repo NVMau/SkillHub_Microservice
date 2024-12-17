@@ -68,6 +68,8 @@ export const API = {
   GET_ALL_POST:"/api/blog/posts",
   CREATE_POST:"/api/blog/posts",
 
+  DELETE_POST: "/api/blog/posts",
+
   GET_COMMENTBYPOSTID:"/api/blog/comments",
 
   ADD_COMMENT:"/api/blog/comments",

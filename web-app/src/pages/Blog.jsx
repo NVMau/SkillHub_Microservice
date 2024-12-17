@@ -21,6 +21,8 @@ import {
   getCommentsByPostId,
   addComment,
   addInteraction,
+  createPost,
+  deletePost,
 } from "../services/blogService";
 import Scene from "./Scene";
 import { useProfile } from "../context/ProfileContext";
@@ -35,9 +37,97 @@ export default function Blog() {
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [snackSeverity, setSnackSeverity] = useState("info");
   const [snackBarMessage, setSnackBarMessage] = useState("");
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false); // Trạng thái cho hộp thoại xóa
+  const [detailDialogOpen, setDetailDialogOpen] = useState(false); // Trạng thái cho hộp thoại chi tiết bài viết
   const { profile, fetchProfile } = useProfile();
-  // Quản lý trạng thái của Dialog
+  const [postToDelete, setPostToDelete] = useState(null); // Bài viết được chọn để xóa
+
+  // Trạng thái cho tạo bài viết
+  const [createPostDialogOpen, setCreatePostDialogOpen] = useState(false);
+  const [newPostTitle, setNewPostTitle] = useState("");
+  const [newPostContent, setNewPostContent] = useState("");
+  const [newPostImage, setNewPostImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
+
+  // Mở form tạo bài viết
+  const handleOpenCreatePostDialog = () => {
+    setCreatePostDialogOpen(true);
+  };
+
+  // Đóng form tạo bài viết
+  const handleCloseCreatePostDialog = () => {
+    setCreatePostDialogOpen(false);
+    setNewPostTitle("");
+    setNewPostContent("");
+    setNewPostImage(null);
+    setPreviewImage(null);
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setNewPostImage(selectedFile);
+    if (selectedFile) {
+      const objectUrl = URL.createObjectURL(selectedFile);
+      setPreviewImage(objectUrl);
+    }
+  };
+
+  // Mở hộp thoại xác nhận xóa
+  const handleOpenDeleteDialog = (post) => {
+    setPostToDelete(post); // Lưu bài viết được chọn để xóa
+    setDeleteDialogOpen(true);   // Mở hộp thoại xóa
+  };
+
+  // Thực hiện việc xóa bài viết
+  const handleDeletePost = async () => {
+    try {
+      await deletePost(postToDelete.postId); // Gọi API để xóa bài viết
+      setSnackBarMessage("Xóa bài viết thành công!");
+      setSnackSeverity("success");
+      setSnackBarOpen(true);
+
+      // Xóa bài viết khỏi giao diện sau khi xóa thành công
+      setPosts(posts.filter((post) => post.postId !== postToDelete.postId));
+    } catch (error) {
+      setSnackBarMessage("Lỗi khi xóa bài viết!");
+      setSnackSeverity("error");
+      setSnackBarOpen(true);
+    } finally {
+      handleCloseDeleteDialog(); // Đóng hộp thoại xóa
+    }
+  };
+
+  // Kiểm tra xem user hiện tại có quyền xóa bài viết không (là chủ bài viết hoặc là admin)
+  const canDeletePost = (post) => {
+    return profile?.profileId === post.authorId || profile?.roles.includes("ROLE_ADMIN");
+  };
+
+  // Đóng hộp thoại xóa
+  const handleCloseDeleteDialog = () => {
+    setDeleteDialogOpen(false);
+    setPostToDelete(null); // Reset bài viết được chọn
+  };
+
+  const handleCreatePost = async () => {
+    const formData = new FormData();
+    formData.append("title", newPostTitle);
+    formData.append("content", newPostContent);
+    formData.append("authorId", profile.profileId);
+    formData.append("image", newPostImage);
+
+    try {
+      await createPost(formData);
+      setSnackBarMessage("Bài viết đã được tạo thành công!");
+      setSnackSeverity("success");
+      setSnackBarOpen(true);
+      fetchPosts(); // Tải lại danh sách bài viết sau khi tạo
+      handleCloseCreatePostDialog(); // Đóng form sau khi tạo thành công
+    } catch (error) {
+      setSnackBarMessage("Lỗi khi tạo bài viết!");
+      setSnackSeverity("error");
+      setSnackBarOpen(true);
+    }
+  };
 
   useEffect(() => {
     fetchPosts();
@@ -142,16 +232,16 @@ export default function Blog() {
     }
   };
 
-  // Hiển thị chi tiết bài viết khi nhấn vào "View More" và mở Dialog
+  // Hiển thị chi tiết bài viết khi nhấn vào "View More" và mở Dialog chi tiết
   const handleViewMore = (post) => {
     setSelectedPost(post); // Lưu bài viết đang được chọn
-    setDialogOpen(true); // Mở Dialog
+    setDetailDialogOpen(true); // Mở Dialog chi tiết
     fetchComments(post.postId); // Lấy danh sách bình luận
   };
 
-  // Đóng Dialog
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
+  // Đóng Dialog chi tiết bài viết
+  const handleCloseDetailDialog = () => {
+    setDetailDialogOpen(false);
     setSelectedPost(null);
   };
 
@@ -309,6 +399,16 @@ export default function Blog() {
                   <Button size="small" onClick={() => handleViewMore(post)}>
                     Xem Thêm
                   </Button>
+                  {/* Nút Xóa Bài Viết */}
+                  {canDeletePost(post) && (
+                    <Button
+                      size="small"
+                      color="error"
+                      onClick={() => handleOpenDeleteDialog(post)}
+                    >
+                      Xóa
+                    </Button>
+                  )}
                 </CardActions>
               </Card>
             </Grid>
@@ -317,8 +417,8 @@ export default function Blog() {
           {/* Dialog để hiển thị chi tiết bài viết */}
           {selectedPost && (
             <Dialog
-              open={dialogOpen}
-              onClose={handleCloseDialog}
+              open={detailDialogOpen} // Dùng detailDialogOpen cho hộp thoại chi tiết
+              onClose={handleCloseDetailDialog}
               fullWidth
               maxWidth="md"
             >
@@ -378,11 +478,80 @@ export default function Blog() {
                 </Box>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleCloseDialog}>Close</Button>
+                <Button onClick={handleCloseDetailDialog}>Close</Button>
               </DialogActions>
             </Dialog>
           )}
         </Grid>
+
+        {/* Nút Tạo Bài Viết */}
+        <Box sx={{ marginTop: "20px", display: "flex", justifyContent: "left" }}>
+          <Button variant="contained" onClick={handleOpenCreatePostDialog}>
+            Tạo Bài Viết
+          </Button>
+        </Box>
+
+        {/* Dialog Tạo Bài Viết */}
+        <Dialog
+          open={createPostDialogOpen}
+          onClose={handleCloseCreatePostDialog}
+          fullWidth
+          maxWidth="md"
+        >
+          <DialogTitle variant="h4">Tạo Bài Viết Mới</DialogTitle>
+          <DialogContent>
+            <TextField
+              label="Tiêu đề bài viết"
+              fullWidth
+              value={newPostTitle}
+              onChange={(e) => setNewPostTitle(e.target.value)}
+              margin="normal"
+            />
+            <TextField
+              label="Nội dung bài viết"
+              fullWidth
+              multiline
+              rows={4}
+              value={newPostContent}
+              onChange={(e) => setNewPostContent(e.target.value)}
+              margin="normal"
+            />
+            <Button variant="contained" component="label">
+              Tải ảnh bài viết
+              <input type="file" hidden onChange={handleFileChange} />
+            </Button>
+            {previewImage && (
+              <Box
+                component="img"
+                src={previewImage}
+                alt="Preview"
+                sx={{ width: "100%", height: "auto", marginTop: "20px" }}
+              />
+            )}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseCreatePostDialog}>Hủy</Button>
+            <Button onClick={handleCreatePost} variant="contained">
+              Tạo bài viết
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Hộp thoại xác nhận xóa */}
+        <Dialog open={deleteDialogOpen} onClose={handleCloseDeleteDialog}>
+          <DialogTitle>Xác nhận xóa bài viết</DialogTitle>
+          <DialogContent>
+            <Typography>
+              Bạn có chắc chắn muốn xóa bài viết "{postToDelete?.title}" không?
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDeleteDialog}>Hủy</Button>
+            <Button onClick={handleDeletePost} color="error">
+              Xóa
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Scene>
   );
