@@ -24,15 +24,15 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ai-service" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
-      <module name="assignment-service" options="-parameters" />
-      <module name="blog-service" options="-parameters" />
-      <module name="chat-service" options="-parameters" />
-      <module name="course-service" options="-parameters" />
-      <module name="enrollment-service" options="-parameters" />
-      <module name="exam_result_service" options="-parameters" />
-      <module name="lecture-service" options="-parameters" />
-      <module name="notification-service" options="-parameters" />
-      <module name="profile-service" options="-parameters" />
+      <module name="assignment-service" options="" />
+      <module name="blog-service" options="" />
+      <module name="chat-service" options="" />
+      <module name="course-service" options="" />
+      <module name="enrollment-service" options="" />
+      <module name="exam_result_service" options="" />
+      <module name="lecture-service" options="" />
+      <module name="notification-service" options="" />
+      <module name="profile-service" options="" />
     </option>
   </component>
 </project>
