@@ -16,7 +16,6 @@ Skill Microservices is an online learning platform designed using microservices 
 - Web Frontend using ReatJS
 
  
- <img src="https://i.imgur.com/Az3XXbq.jpeg" alt="Tên ảnh" width="600"/>
 
  ![Architecture Diagram](https://i.imgur.com/Az3XXbq.jpeg)
 
