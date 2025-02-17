@@ -15,6 +15,11 @@ Skill Microservices is an online learning platform designed using microservices 
 - API Gateway using Spring Cloud Gateway MVC
 - Web Frontend using ReatJS
 
+ 
+ 
+ ![Architecture Diagram]([https://i.imgur.com/xyz123.png](https://imgur.com/a/9w7uV9l))
+
+
 ## Tech Stack
 The technologies used in this project are:
 - Spring Boot
